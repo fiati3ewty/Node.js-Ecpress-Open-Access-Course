@@ -4,15 +4,28 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 
-const port = 3000;
+const PORT = process.env.PORT || 3001;
+const productRouter = express.Router();
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '/public/')));
 
-app.get('/', (req, res) => {
-  res.send('Hello EP4');
+app.set('views', './src/views');
+app.set('view engine', 'ejs');
+
+app.use('/products', productRouter);
+
+productRouter.route('/').get((req, res) => {
+  res.render('products');
 });
 
-app.listen(port, () => {
-  debug(`Listening on localhost:${port}`);
+app.get('/', (req, res) => {
+  res.render('index', {
+    username: 'Choco',
+    customers: ['Kitti', 'Kittikorn', 'Kity'],
+  });
+});
+
+app.listen(PORT, () => {
+  debug(`Listening on localhost:${PORT}`);
 });
