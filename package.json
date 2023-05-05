@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=express:* nodemon app.js"
+    "start": "DEBUG=express:* nodemon app.js",
+    "start:uih": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +15,11 @@
     "debug": "^4.3.4",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "json": "^11.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.88.2"
   },
   "nodemonConfig": {
     "env": {
